@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "302928066328",
+    "project_id": "lol-beach",
+    "storage_bucket": "lol-beach.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302928066328:android:62ffae50f1e469a649906d",
+        "android_client_info": {
+          "package_name": "com.beach.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_lFFAo6LlLUJubqpfTemNk_6gyB4mh_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
