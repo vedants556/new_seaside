@@ -3,6 +3,7 @@ import 'notifications_screen.dart';
 import 'messages_screen.dart';
 import 'profile_screen.dart';
 import 'search_screen.dart';
+import 'settings_screen.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'beach_detail_screen.dart';
 import '../models/beach.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       description: 'Varkala Beach is known for its stunning cliff-side views and serene atmosphere.',
       latitude: 8.7378,
       longitude: 76.7164,
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Varkala_Beach_Kerala.jpg/1280px-Varkala_Beach_Kerala.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1580253464548-bf8c6c3fe045',
     ),
     const Beach(
       name: 'Kovalam Beach',
@@ -35,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       description: 'Kovalam Beach is famous for its crescent-shaped beaches and lighthouse.',
       latitude: 8.3988,
       longitude: 76.9782,
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kovalam_Beach_Thiruvananthapuram_Kerala_India_2014_%282%29.jpg/1280px-Kovalam_Beach_Thiruvananthapuram_Kerala_India_2014_%282%29.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1582972236019-ea4af5ffe587',
     ),
     const Beach(
       name: 'Marari Beach',
@@ -43,10 +44,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       description: 'Marari Beach offers a peaceful and less crowded beach experience.',
       latitude: 9.5925,
       longitude: 76.3013,
-      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Marari_Beach%2C_Kerala.jpg/1280px-Marari_Beach%2C_Kerala.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a',
     ),
   ];
-
   @override
   void initState() {
     super.initState();
@@ -87,6 +87,17 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           title: const Text('Coastal Tourism App', style: TextStyle(fontWeight: FontWeight.bold)),
           elevation: 0,
           backgroundColor: Colors.transparent,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.settings),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                );
+              },
+            ),
+          ],
         ),
         body: SafeArea(
           child: AnimatedSwitcher(
