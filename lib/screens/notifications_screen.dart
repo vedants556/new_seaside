@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class NotificationsScreen extends StatelessWidget {
-  // Sample notifications; replace with actual data source
   final List<Map<String, String>> alerts = [
     {'title': 'High Wave Alert', 'body': 'High waves detected at Goa Beach.'},
     {'title': 'Storm Surge Warning', 'body': 'Storm surge detected at Chennai Beach.'},
@@ -17,12 +16,12 @@ class NotificationsScreen extends StatelessWidget {
     {'title': 'Ocean Temperature', 'body': 'Current ocean temperature at 28°C in Palolem Beach.'},
   ];
 
-  NotificationsScreen({super.key});
+  NotificationsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3, // Number of tabs
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Notifications'),
@@ -36,18 +35,9 @@ class NotificationsScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            _buildNotificationList(
-              alerts,
-              'No alerts available',
-            ),
-            _buildNotificationList(
-              warnings,
-              'No warnings available',
-            ),
-            _buildNotificationList(
-              updates,
-              'No updates available',
-            ),
+            _buildNotificationList(alerts, 'No alerts available'),
+            _buildNotificationList(warnings, 'No warnings available'),
+            _buildNotificationList(updates, 'No updates available'),
           ],
         ),
       ),
@@ -57,24 +47,26 @@ class NotificationsScreen extends StatelessWidget {
   Widget _buildNotificationList(List<Map<String, String>> notifications, String emptyMessage) {
     return notifications.isNotEmpty
         ? ListView.builder(
-      itemCount: notifications.length,
-      itemBuilder: (context, index) {
-        final notification = notifications[index];
-        return ListTile(
-          title: Text(notification['title'] ?? 'No Title'),
-          subtitle: Text(notification['body'] ?? 'No Details Available'),
-          leading: const Icon(
-            Icons.notification_important,
-            color: Colors.teal,
-          ),
-          onTap: () {
-            // Handle tap on notification (e.g., navigate or show more details)
-          },
-        );
-      },
-    )
+            itemCount: notifications.length,
+            itemBuilder: (context, index) {
+              final notification = notifications[index];
+              return ExpansionTile(
+                title: Text(notification['title'] ?? 'No Title'),
+                leading: const Icon(
+                  Icons.notification_important,
+                  color: Colors.teal,
+                ),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(notification['body'] ?? 'No Details Available'),
+                  ),
+                ],
+              );
+            },
+          )
         : Center(
-      child: Text(emptyMessage),
-    );
+            child: Text(emptyMessage),
+          );
   }
 }

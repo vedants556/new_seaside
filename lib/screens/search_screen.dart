@@ -4,7 +4,7 @@ import '../providers/beach_provider.dart';
 import 'beach_detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({super.key});
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -34,8 +34,8 @@ class _SearchScreenState extends State<SearchScreen> {
     setState(() {
       filteredBeaches = allBeaches
           .where((beach) =>
-      beach.name.toLowerCase().contains(query.toLowerCase()) ||
-          beach.description.toLowerCase().contains(query.toLowerCase()))
+              beach.name.toLowerCase().contains(query.toLowerCase()) ||
+              beach.description.toLowerCase().contains(query.toLowerCase()))
           .toList();
     });
   }
@@ -71,56 +71,56 @@ class _SearchScreenState extends State<SearchScreen> {
             child: isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : filteredBeaches.isEmpty
-                ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.beach_access, size: 64, color: Colors.grey),
-                  const SizedBox(height: 16),
-                  Text(
-                    'No matching beaches found.',
-                    style: TextStyle(fontSize: 18, color: Colors.grey[600]),
-                  ),
-                ],
-              ),
-            )
-                : ListView.builder(
-              itemCount: filteredBeaches.length,
-              itemBuilder: (context, index) {
-                final beach = filteredBeaches[index];
-                return Card(
-                  elevation: 2,
-                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(16),
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(beach.imageUrl),
-                      radius: 30,
-                    ),
-                    title: Text(
-                      beach.name,
-                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    subtitle: Text(
-                      beach.description,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BeachDetailScreen(beach: beach),
+                    ? Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.beach_access, size: 64, color: Colors.grey),
+                            const SizedBox(height: 16),
+                            Text(
+                              'No matching beaches found.',
+                              style: TextStyle(fontSize: 18, color: Colors.grey[600]),
+                            ),
+                          ],
                         ),
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
+                      )
+                    : ListView.builder(
+                        itemCount: filteredBeaches.length,
+                        itemBuilder: (context, index) {
+                          final beach = filteredBeaches[index];
+                          return Card(
+                            elevation: 2,
+                            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: ListTile(
+                              contentPadding: const EdgeInsets.all(16),
+                              leading: CircleAvatar(
+                                backgroundImage: NetworkImage(beach.imageUrl),
+                                radius: 30,
+                              ),
+                              title: Text(
+                                beach.name,
+                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                              ),
+                              subtitle: Text(
+                                beach.description,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => BeachDetailScreen(beach: beach),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      ),
           ),
         ],
       ),
