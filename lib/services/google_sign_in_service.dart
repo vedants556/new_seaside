@@ -19,12 +19,19 @@ class GoogleSignInService {
       return await _auth.signInWithCredential(credential);
     } catch (e) {
       print('Error signing in with Google: $e');
-      return null;
+      rethrow; // Rethrow the error for better error handling in the UI
     }
   }
 
   Future<void> signOut() async {
-    await _googleSignIn.signOut();
-    await _auth.signOut();
+    try {
+      await Future.wait([
+        _googleSignIn.signOut(),
+        _auth.signOut(),
+      ]);
+    } catch (e) {
+      print('Error signing out: $e');
+      rethrow; // Rethrow the error for better error handling in the UI
+    }
   }
 }

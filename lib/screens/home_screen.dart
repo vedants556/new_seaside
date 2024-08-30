@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       description: 'Varkala Beach is known for its stunning cliff-side views and serene atmosphere.',
       latitude: 8.7378,
       longitude: 76.7164,
-      imageUrl: 'https://example.com/varkala_beach.jpg',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Varkala_Beach_Kerala.jpg/1280px-Varkala_Beach_Kerala.jpg',
     ),
     const Beach(
       name: 'Kovalam Beach',
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       description: 'Kovalam Beach is famous for its crescent-shaped beaches and lighthouse.',
       latitude: 8.3988,
       longitude: 76.9782,
-      imageUrl: 'https://example.com/kovalam_beach.jpg',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kovalam_Beach_Thiruvananthapuram_Kerala_India_2014_%282%29.jpg/1280px-Kovalam_Beach_Thiruvananthapuram_Kerala_India_2014_%282%29.jpg',
     ),
     const Beach(
       name: 'Marari Beach',
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       description: 'Marari Beach offers a peaceful and less crowded beach experience.',
       latitude: 9.5925,
       longitude: 76.3013,
-      imageUrl: 'https://example.com/marari_beach.jpg',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Marari_Beach%2C_Kerala.jpg/1280px-Marari_Beach%2C_Kerala.jpg',
     ),
   ];
 
@@ -69,15 +69,15 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
       brightness: isDark ? Brightness.dark : Brightness.light,
       colorScheme: isDark
           ? ColorScheme.dark(
-        primary: Colors.tealAccent,
-        secondary: Colors.orangeAccent,
-        surface: Colors.grey[900]!,
-      )
+              primary: Colors.tealAccent,
+              secondary: Colors.orangeAccent,
+              surface: Colors.grey[900]!,
+            )
           : ColorScheme.light(
-        primary: Colors.teal,
-        secondary: Colors.orange,
-        surface: Colors.grey[100]!,
-      ),
+              primary: Colors.teal,
+              secondary: Colors.orange,
+              surface: Colors.grey[100]!,
+            ),
     );
 
     return Theme(
